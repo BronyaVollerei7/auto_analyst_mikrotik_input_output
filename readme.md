@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📡 MikroTik Auto Analysis
+# MikroTik Auto Analysis
 
 <p>An automated system to fetch, clean, and analyze network traffic data<br/>from <strong>MikroTik RouterOS</strong> devices with a modular approach.</p>
 
