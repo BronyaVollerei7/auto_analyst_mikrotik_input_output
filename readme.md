@@ -2,7 +2,7 @@
 
 # 📡 MikroTik Auto Analysis
 
-<p>Sistem otomatis untuk mengambil, membersihkan, dan menganalisis data traffic<br/>dari perangkat <strong>MikroTik RouterOS</strong> dengan pendekatan modular.</p>
+<p>An automated system to fetch, clean, and analyze network traffic data<br/>from <strong>MikroTik RouterOS</strong> devices with a modular approach.</p>
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)
@@ -15,13 +15,13 @@
 
 ## 🚀 Features
 
-| Icon | Fitur | Deskripsi |
-|------|-------|-----------|
-| 📡 | **Auto Fetch Traffic** | Ambil data traffic langsung dari MikroTik RouterOS secara otomatis |
-| 🧹 | **Data Cleaning** | Preprocessing & cleaning otomatis untuk data yang siap dianalisis |
-| 📊 | **Generate Report** | Laporan analisis traffic yang informatif dan terstruktur |
-| 🧩 | **Modular & Scalable** | Struktur project yang mudah dikembangkan dan di-maintain |
-| 🔑 | **Env-Based Config** | Konfigurasi aman berbasis `.env` tanpa hardcode credential |
+| Icon | Feature | Description |
+|------|---------|-------------|
+| 📡 | **Auto Fetch Traffic** | Automatically retrieve traffic data directly from MikroTik RouterOS |
+| 🧹 | **Data Cleaning** | Automated preprocessing & cleaning for analysis-ready data |
+| 📊 | **Generate Report** | Produce informative and well-structured traffic analysis reports |
+| 🧩 | **Modular & Scalable** | Clean project structure that's easy to extend and maintain |
+| 🔑 | **Env-Based Config** | Secure credential management via `.env` — no hardcoding |
 
 ---
 
@@ -31,19 +31,19 @@
 MIKROTIK_AUTO_ANALYSIS/
 │
 ├── .venv/                           # 🐍 Virtual environment
-├── analyst_data_clean/              # 🧹 Data hasil cleaning
-├── analyst_data_raw/                # 📥 Data mentah dari MikroTik
+├── analyst_data_clean/              # 🧹 Cleaned output data
+├── analyst_data_raw/                # 📥 Raw data from MikroTik
 │   └── traffic_raw_YYYYMMDD.csv
 │
-├── analyst_report/                  # 📋 Hasil report analisis
+├── analyst_report/                  # 📋 Analysis reports
 │
 ├── script/
-│   ├── get_data_mikrotik.py         # 🔌 Fetch data
-│   ├── process_traffic_mikrotik.py  # ⚙️  Processing
-│   └── report_traffic_mikrotik.py   # 📝 Reporting
+│   ├── get_data_mikrotik.py         # 🔌 Data fetching
+│   ├── process_traffic_mikrotik.py  # ⚙️  Data processing
+│   └── report_traffic_mikrotik.py   # 📝 Report generation
 │
-├── .env                             # 🔑 Credential (tidak di-push)
-├── .env.example                     # 📄 Template environment
+├── .env                             # 🔑 Credentials (never commit this)
+├── .env.example                     # 📄 Environment template
 ├── .gitignore
 └── main.py                          # 🏁 Entry point
 ```
@@ -52,14 +52,14 @@ MIKROTIK_AUTO_ANALYSIS/
 
 ## ⚙️ Installation
 
-### 1️⃣ Clone Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/BronyaVollerei7/auto_analyst_mikrotik_input_output.git
 cd auto_analyst_mikrotik_input_output
 ```
 
-### 2️⃣ Create Virtual Environment
+### 2️⃣ Create a Virtual Environment
 
 ```bash
 python -m venv .venv
@@ -81,34 +81,34 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Setup Environment
+### 4️⃣ Configure Environment
 
 ```bash
 cp .env.example .env
 ```
 
-Isi dengan credential MikroTik kamu:
+Fill in your MikroTik credentials:
 
 ```env
 MIKROTIK_IP=yourmikrotikIP
-MIKROTIK_USER=yourmikroikuser
-MIKROTIK_PASS=yourmikrotikpasword
+MIKROTIK_USER=yourmikrotikuser
+MIKROTIK_PASS=yourmikrotikpassword
 MIKROTIK_PORT=yourmikrotikport
 ```
 
-> ⚠️ **Jangan commit file `.env` ke repository!**
+> ⚠️ **Never commit your `.env` file to the repository!**
 
 ---
 
 ## ▶️ Usage
 
-🔄 Menjalankan **full pipeline**:
+🔄 Run the **full pipeline**:
 
 ```bash
 python main.py
 ```
 
-🧩 Menjalankan **per modul**:
+🧩 Run **individual modules**:
 
 ```bash
 python script/get_data_mikrotik.py
@@ -129,62 +129,62 @@ python script/report_traffic_mikrotik.py
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-1. **📡 Data Collection** — Mengambil data traffic langsung dari router MikroTik
-2. **🔧 Data Processing** — Cleaning, transform, dan agregasi data traffic
-3. **📊 Reporting** — Generate laporan analisis traffic yang terstruktur
+1. **📡 Data Collection** — Fetch raw traffic data directly from the MikroTik router
+2. **🔧 Data Processing** — Clean, transform, and aggregate the traffic data
+3. **📊 Reporting** — Generate structured and readable analysis reports
 
 ---
 
 ## 📈 Output Directory
 
-| Folder | Isi |
-|--------|-----|
-| 📥 `analyst_data_raw/` | Data mentah hasil fetch dari router |
-| 🧹 `analyst_data_clean/` | Data setelah proses cleaning |
-| 📋 `analyst_report/` | Laporan analisis final |
+| Folder | Contents |
+|--------|----------|
+| 📥 `analyst_data_raw/` | Raw data fetched from the router |
+| 🧹 `analyst_data_clean/` | Data after cleaning & processing |
+| 📋 `analyst_report/` | Final analysis reports |
 
 ---
 
 ## 🔐 Security Notes
 
 > [!WARNING]
-> Jaga credential MikroTik kamu tetap aman!
+> Keep your MikroTik credentials safe at all times!
 
-- 🔑 Gunakan `.env` untuk menyimpan semua credential — jangan hardcode di dalam script
-- 🚫 Jangan pernah expose username & password router ke publik atau push ke repository
-- 👁️ Pastikan `.env` sudah terdaftar di `.gitignore` sebelum commit
+- 🔑 Always use `.env` to store credentials — never hardcode them in scripts
+- 🚫 Never expose your router's username & password in public repositories
+- 👁️ Make sure `.env` is listed in `.gitignore` before making any commits
 
 ---
 
 ## 🧠 Tech Stack
 
-| Teknologi | Kegunaan |
-|-----------|----------|
-| 🐍 **Python 3.x** | Core language untuk semua script |
+| Technology | Purpose |
+|------------|---------|
+| 🐍 **Python 3.x** | Core language for all scripts |
 | 🐼 **Pandas** | Data manipulation & analysis |
-| 🌐 **MikroTik RouterOS API** | Interface ke perangkat router |
-| 📄 **CSV Processing** | Format data input & output |
+| 🌐 **MikroTik RouterOS API** | Interface to the router device |
+| 📄 **CSV Processing** | Input & output data format |
 
 ---
 
-## 📌 Use Case
+## 📌 Use Cases
 
-Project ini cocok untuk:
+This project is ideal for:
 
-- 🖥️ Monitoring traffic kantor
-- 📶 Analisa penggunaan bandwidth
-- 🔍 Audit jaringan internal
-- 🤖 Automation reporting harian
+- 🖥️ Office network traffic monitoring
+- 📶 Bandwidth usage analysis
+- 🔍 Internal network auditing
+- 🤖 Automated daily reporting
 
 ---
 
 ## 🏗️ Future Improvements
 
-- [ ] ⏰ Scheduler otomatis (cron / task scheduler)
+- [ ] ⏰ Automated scheduler (cron / task scheduler)
 - [ ] 🗄️ Database integration (PostgreSQL / MySQL)
 - [ ] 🌐 Web dashboard (Flask / FastAPI)
-- [ ] 📉 Visualisasi chart interaktif
-- [ ] 🐳 Deployment ke server / container (Docker)
+- [ ] 📉 Interactive chart visualization
+- [ ] 🐳 Server / container deployment (Docker)
 
 ---
 
