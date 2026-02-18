@@ -59,5 +59,5 @@ def collect_traffic():
             print(f"Data Train Berhasil ke save di {file_path}")
       except Exception as e:
             routing_api.disconnect()
-            print("❌ ERROR:", e)
+            print("ERROR:", e)
       

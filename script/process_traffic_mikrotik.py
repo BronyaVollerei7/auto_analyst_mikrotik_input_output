@@ -16,7 +16,7 @@ def clean_traffic(date_str: str):
       if not raw_file.exists():
          raise FileNotFoundError(f"RAW file tidak ditemukan: {raw_file}")
 
-    # RAW LOAD
+    # Load
       df = pd.read_csv(raw_file)
 
     # timestamp
@@ -29,7 +29,7 @@ def clean_traffic(date_str: str):
       df["rx_delta_byte"] = df.groupby("interface")["rx_byte"].diff()
       df["tx_delta_byte"] = df.groupby("interface")["tx_byte"].diff()
 
-    #  Remove First One
+    #  Remove pertama
       df = df.dropna()
       df = df[(df["rx_delta_byte"] >= 0) & (df["tx_delta_byte"] >= 0)]
 
@@ -49,7 +49,7 @@ def clean_traffic(date_str: str):
             ]
       ]
 
-      # Saving
+      # save
       clean_df.to_csv(clean_file, index=False)
 
       print(f"Processing Data ke Clean Berhasil Di save: {clean_file}")

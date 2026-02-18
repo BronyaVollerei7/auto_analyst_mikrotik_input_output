@@ -11,7 +11,7 @@ def report_traffic(date_str: str):
       # Change Date string
       date_folder = pd.to_datetime(date_str).strftime("%Y-%m-%d")
 
-      # report masuk ke folder tanggal
+      # pake konsep folder = tanggal
       REPORT_DIR = REPORT_ROOT / date_folder
       REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -20,11 +20,11 @@ def report_traffic(date_str: str):
       if not clean_file.exists():
             raise FileNotFoundError(f"CLEAN file tidak ditemukan: {clean_file}")
 
-      # Clean Data get
+      # clean data
       df = pd.read_csv(clean_file)
       df["timestamp"] = pd.to_datetime(df["timestamp"])
 
-      # Interface summary
+      # summary
       summary = df.groupby("interface").agg(
             avg_rx_mb=("rx_delta_mb", "mean"),
             avg_tx_mb=("tx_delta_mb", "mean"),
@@ -38,7 +38,7 @@ def report_traffic(date_str: str):
       summary_file = REPORT_DIR / "summary.csv"
       summary.to_csv(summary_file, index=False)
 
-      # Peak the traffic tiap interface
+      # peak traffic
       peak_rx_df = (
       df.loc[df.groupby("interface")["rx_delta_mb"].idxmax()]
       .assign(type="RX", value_mb=lambda x: x["rx_delta_mb"])
